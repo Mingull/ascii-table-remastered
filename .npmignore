@@ -1,4 +1,4 @@
-./javascript
-./node_modules
-./.prettierrc
-./index.js
+/javascript
+/node_modules
+.prettierrc
+index.js
