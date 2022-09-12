@@ -107,6 +107,5 @@ dist
 /src
 /index.js
 .prettierrc
-package.json
 package-lock.json
 tsconfig.json
