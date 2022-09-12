@@ -41,8 +41,8 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
+# # TypeScript v1 declaration files
+/typings/
 
 # TypeScript cache
 *.tsbuildinfo
@@ -105,7 +105,7 @@ dist
 
 /javascript
 /src
-index.js
+/index.js
 .prettierrc
 package.json
 package-lock.json

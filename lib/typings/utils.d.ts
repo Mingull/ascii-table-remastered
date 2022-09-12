@@ -5,3 +5,8 @@ export declare type AsciiTableOptions = {
     top: string;
     bottom: string;
 };
+export declare type AsciiTableObject = {
+    title: string;
+    headings: string[];
+    rows: unknown[];
+};
