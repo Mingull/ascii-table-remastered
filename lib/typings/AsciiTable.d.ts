@@ -1,8 +1,10 @@
-import { AsciiTableObject, AsciiTableOptions } from "./utils";
+import { AsciiTableAlignType, AsciiTableObject, AsciiTableOptions } from "./utils.js";
 export default class AsciiTable {
     private _headings;
+    private _headingAlign;
     private _rows;
     private _title;
+    private _titleAlign;
     private _aligns;
     private _edge;
     private _fill;
@@ -10,22 +12,25 @@ export default class AsciiTable {
     private _bottom;
     private _border;
     private _spacing;
-    private _titleAlign;
     private _maxCells;
-    private _colMaxes;
-    private _headingAlign;
+    private _maxCols;
     private _justify;
     options: AsciiTableOptions;
+    /**
+     *
+     * @param {string} title
+     * @param {AsciiTableOptions} options
+     */
     constructor(title: string, options: AsciiTableOptions);
     /**
      * create new table instance
      * @param {string} title Table Title
      * @param {AsciiTableOptions} options Table options
-     * @deprecated
+     * @static
      * @returns
      */
-    factory(title: string, options: AsciiTableOptions): AsciiTable;
-    align(dir: number, str: string, length: number, pad: string): string;
+    static factory(title: string, options: AsciiTableOptions): AsciiTable;
+    align(direction: AsciiTableAlignType, str: string, length: number, pad: string): string;
     alignLeft(str: string, length: number, pad?: string): string;
     alignCenter(str: string, length: number, pad?: string): string;
     alignRight(str: string, length: number, pad?: string): string;
@@ -40,10 +45,11 @@ export default class AsciiTable {
         right?: string;
     } | string): this;
     removeBorder(): this;
-    setAlign(idx: number, dir: number): this;
+    setRowAlign(row: number, direction: AsciiTableAlignType): this;
+    setAlign(direction: AsciiTableAlignType): this;
     setTitle(title: string): this;
-    getTitle(): string | AsciiTableObject;
-    setTitleAlign(dir: number): this;
+    getTitle(): string;
+    setTitleAlign(direction: AsciiTableAlignType): this;
     sort(method: ((a: any, b: any) => number) | undefined): this;
     sortColumn(idx: string | number, method: (a: any[], b: any[]) => number): this;
     setHeading(...columnHeadings: string[]): this;
@@ -56,7 +62,7 @@ export default class AsciiTable {
     clearRows(): this;
     setJustify(val: boolean): this;
     toJSON(): {
-        title: string | AsciiTableObject;
+        title: string;
         heading: any[];
         rows: any[];
     };
@@ -66,9 +72,4 @@ export default class AsciiTable {
     private _rowSeparator;
     private _renderTitle;
     private _renderRow;
-}
-export declare enum AsciiTableAlign {
-    LEFT = 0,
-    CENTER = 1,
-    RIGHT = 2
 }
