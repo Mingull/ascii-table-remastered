@@ -1,5 +1,6 @@
 /javascript
-/code
-/index.js
+/docs
+/template
 .prettierrc
+jsdoc.json
 package-lock.json

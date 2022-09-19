@@ -104,8 +104,9 @@ dist
 .tern-port
 
 /javascript
-/src
 /index.js
+/template
 .prettierrc
+jsdoc.json
 package-lock.json
 tsconfig.json

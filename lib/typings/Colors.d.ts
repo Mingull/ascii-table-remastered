@@ -1,4 +1,9 @@
-export default class Colors {
+/**
+ * Created colored text using the ANSI colors
+ * @author Mingull
+ * @since 0.0.1
+ */
+declare class Colors {
     private static RESET;
     private static HIGH_INTENSITY;
     private static LOW_INTENSITY;
@@ -67,14 +72,17 @@ export default class Colors {
     static BgWhite: Colors;
     private codes;
     private codesStr;
+    private colors;
     constructor(...codes: string[]);
+    private getAllColors;
     and(other: Colors): Colors;
     colorize(original: string): string;
-    static hexColor(hex: string): string;
-    static rgbColor(r: number, g: number, b: number): string;
-    static rgbColor(r: string, g: string, b: string): string;
+    static hex(hex: string, name: string): void;
+    private static convertHexColor;
+    private static convertRGBColor;
 }
-export declare type ColorsType = keyof Omit<typeof Colors, ColorsEnum | "prototype" | "rgbColor" | "hexColor">;
+export default Colors;
+export declare type ColorsType = keyof Omit<typeof Colors, ColorsEnum | "prototype" | "rgb" | "hex">;
 export declare enum ColorsEnum {
     RESET = "\u001B[0m",
     HIGH_INTENSITY = "\u001B[1m",
